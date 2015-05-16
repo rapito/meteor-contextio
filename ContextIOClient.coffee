@@ -16,6 +16,9 @@ class @ContextIOClient
 
     ContextIOClient.instance = @
 
+  createAccount: ()->
+
+
   @get: (key, secret)->
     if ContextIOClient.instance?
       return ContextIOClient.instance
