@@ -1,0 +1,14 @@
+{
+  "public": {
+    "app": {
+      "title": "your-app-title",
+      "version": "your-app-version"
+    }
+  },
+  "services": {
+    "contextio": {
+      "key": "{your-api-key}",
+      "secret": "{your-api-secret}"
+    }
+  }
+}
