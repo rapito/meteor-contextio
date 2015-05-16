@@ -13,6 +13,8 @@ Package.onUse(function (api) {
     api.versionsFrom('1.1.0.2');
     api.use('coffeescript');
     api.use('underscore');
+    api.use(['practicalmeteor:chai']);
+
     api.export('Cio', ['server','client']);
     api.addFiles('ContextIOClient.coffee');
 });

@@ -29,7 +29,7 @@ Even though the package contains some utilities to make integration easier, it i
     ``` var cio = Cio.get(apiKey,apiSecret); ```
 
 - Create cio accounts:
-    ```var userCioAccount = cio.createAccount(primaryEmailAddress@gmail.com,firstName,lastName);```
+    ```var userCioAccount = cio.createAccount(primaryEmailAddress,firstName,lastName);```
 - Connecting mailboxes:
     ```{{> connectMailboxButton userCioAccount}}```
 - Use npm package directly:

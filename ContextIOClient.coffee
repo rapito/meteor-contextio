@@ -16,8 +16,19 @@ class @ContextIOClient
 
     ContextIOClient.instance = @
 
-  createAccount: ()->
+  createAccount: (primaryEmailAddress, firstName, lastName)->
+    expect(primaryEmailAddress).to.be.a('string')
+    expect(firstName).to.be.a('string')
+    expect(lastName).to.be.a('string')
+    result = null
 
+    asyncFunc = Meteor.wrapAsync(@client.accounts().post)
+    asyncFunc {email: primaryEmailAddress, first_name: firstName, last_name: lastName}, (e, r)->
+      expect(e).to.be.null
+      result = r
+      console.log r
+
+    result
 
   @get: (key, secret)->
     if ContextIOClient.instance?
