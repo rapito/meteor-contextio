@@ -13,6 +13,7 @@ Package.onUse(function (api) {
     var both = ['client', 'server'];
 
     api.versionsFrom('1.1.0.2');
+    api.use('reactive-var');
     api.use('coffeescript');
     api.use('underscore');
     api.use('practicalmeteor:chai');
@@ -22,7 +23,7 @@ Package.onUse(function (api) {
 
     // API
     api.export('Cio', 'server');
-    api.addFiles('ContextIOClient.coffee', 'server');
+    api.addFiles('server/lib/ContextIOClient.coffee', 'server');
 
     // UI
     api.addFiles('client/lib/templates/buttons.html', 'client');
