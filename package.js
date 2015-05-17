@@ -10,13 +10,25 @@ Npm.depends({
 });
 
 Package.onUse(function (api) {
+    var both = ['client', 'server'];
+
     api.versionsFrom('1.1.0.2');
     api.use('coffeescript');
     api.use('underscore');
-    api.use(['practicalmeteor:chai']);
+    api.use('practicalmeteor:chai');
 
-    api.export('Cio', ['server','client']);
-    api.addFiles('ContextIOClient.coffee');
+    api.use('standard-app-packages', both);
+    api.use('templating', 'client');
+
+    // API
+    api.export('Cio', 'server');
+    api.addFiles('ContextIOClient.coffee', 'server');
+
+    // UI
+    api.addFiles('client/lib/templates/buttons.html', 'client');
+    api.addFiles('client/lib/templates/buttons.coffee', 'client');
+
+
 });
 
 Package.onTest(function (api) {
@@ -25,5 +37,5 @@ Package.onTest(function (api) {
     api.use('coffeescript');
 
     api.addFiles('tests/Tests.coffee');
-    api.addFiles('tests/ContextIOClientTests.coffee');
+    api.addFiles('tests/ContextIOClientTests.coffee', 'server');
 });

@@ -30,11 +30,26 @@ class ContextIOClientTests
         expect(@wrapper.key).to.equal(key);
         expect(@wrapper.secret).to.equal(secret);
 
+    describe 'Client:npm-module', ->
+      it 'should get accounts', (test)->
+        Cio.client.accounts().get null, (e, r)->
+          expect(e).to.be.null
+
+          expect(r).to.be.an('object')
+          expect(r).to.have.property('statusCode')
+          expect(r).to.have.property('headers')
+          expect(r.headers).to.have.property('link')
+
+          expect(r.statusCode).to.eql(200)
+          expect(r.headers.link).to.have.string('accounts')
+
     describe 'Functions', ->
       it 'should create accounts and delete them', (test)->
         result = Cio.createAccount(user.mail,user.name,user.lastname)
-        console.log result
         expect(result).to.be.an('object')
+        expect(result).to.have.property('body')
+
+        result = result.body
         expect(result).to.have.property('success')
         expect(result).to.have.property('id')
 
@@ -45,21 +60,6 @@ class ContextIOClientTests
 
         Cio.client.accounts(id).delete()
 
-
-    describe 'Client:npm-module', ->
-      it 'should get accounts', (test)->
-        Cio.client.accounts().get null, (e, r)->
-#          console.log e
-          expect(e).to.be.null
-
-#          console.log r
-          expect(r).to.be.an('object')
-          expect(r).to.have.property('statusCode')
-          expect(r).to.have.property('headers')
-          expect(r.headers).to.have.property('link')
-
-          expect(r.statusCode).to.eql(200)
-          expect(r.headers.link).to.have.string('accounts')
 
 
 Munit.run(new ContextIOClientTests())

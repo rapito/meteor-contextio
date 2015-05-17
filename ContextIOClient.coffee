@@ -16,18 +16,24 @@ class @ContextIOClient
 
     ContextIOClient.instance = @
 
-  createAccount: (primaryEmailAddress, firstName, lastName)->
+  createAccount: (primaryEmailAddress, firstName, lastName, cb)->
     expect(primaryEmailAddress).to.be.a('string')
     expect(firstName).to.be.a('string')
     expect(lastName).to.be.a('string')
+    params = {email: primaryEmailAddress, first_name: firstName, last_name: lastName}
+    result = @callAsyncOrSync(@client.accounts().post,params,cb)
+
+    result
+
+  # Shared method to choose whether to do an Async o
+  # Sync call the the specified function
+  callAsyncOrSync: (func,params,cb)->
     result = null
-
-    asyncFunc = Meteor.wrapAsync(@client.accounts().post)
-    asyncFunc {email: primaryEmailAddress, first_name: firstName, last_name: lastName}, (e, r)->
-      expect(e).to.be.null
-      result = r
-      console.log r
-
+    if not cb
+      asyncFunc = Meteor.wrapAsync(func)
+      result = asyncFunc params
+    else
+      func params, cb
     result
 
   @get: (key, secret)->
