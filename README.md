@@ -39,7 +39,7 @@ Even though the package contains some utilities to make integration easier, it i
         });
     ```
 
-    ```{{> connectMailboxButton account=userCioAccount}}```
+    ```{{> connectMailboxButton account=userCioAccountId}}```
 
 - Use npm package directly:
     ``` var cioNode = cio.client; ```
@@ -47,7 +47,7 @@ Even though the package contains some utilities to make integration easier, it i
 ## Templates
 
 - connectMailboxButton: Adds a Button which initiates negotiation to [connect](https://context.io/docs/2.0/connect_tokens) a new mailbox. **(Hotmail or Gmail only)**
-    - **required:** ```userCioAccountId``` param or as a context variable. account to connect mailbox to.
+    - **required:** ```account``` account id to connect mailbox to.
     - *optional:* ```cio``` to specify wrapper to be used. *defaults to singleton*
     - *optional:* ```classes``` to override button style.
     - *optional:* ```label``` Button Label.
