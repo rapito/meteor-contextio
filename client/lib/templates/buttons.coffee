@@ -1,4 +1,4 @@
-popupFlags = 'width=440,height=301'
+popupFlags = 'width=440,height=400'
 isAddingAccount = new ReactiveVar()
 
 Template.connectMailboxButton.rendered = ->
@@ -20,11 +20,11 @@ Template.connectMailboxButton.events
 
     isAddingAccount.set true
     Meteor.call 'addMailboxSimple', account, (e, connectURL)->
-      console.log e, connectURL
       isAddingAccount.set false
       if e?
         console.error e
         return
+
       window.open connectURL, "Office", popupFlags
 
 Template.connectMailboxButton.helpers
