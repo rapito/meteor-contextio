@@ -18,11 +18,9 @@ class ContextIOClientTests
       afterAll (test) ->
 
       it 'should be constructed', (test) ->
-        console.log 'should be constructed'
         expect(@wrapper).to.be.an.instanceof(ContextIOClient);
 
       it 'should have same keys', (test) ->
-        console.log 'should have same keys'
 
         # this values should be changed to
         # what you have on your Meteor.settings
@@ -50,7 +48,7 @@ class ContextIOClientTests
     describe 'Functions', ->
       it 'should create accounts and delete them', (test)->
         # test full createAccount method
-        result = Cio.createAccount(user.mail,user.name,user.lastname)
+        result = Cio.createAccount(user.mail, user.name, user.lastname)
         expect(result).to.be.an('object')
         expect(result).to.have.property('body')
 
@@ -65,7 +63,7 @@ class ContextIOClientTests
         Cio.client.accounts(id).delete()
 
         # test simple createAccount method
-        result = Cio.createAccountSimple(user.mail,user.name,user.lastname)
+        result = Cio.createAccountSimple(user.mail, user.name, user.lastname)
         expect(result).to.be.a('string')
 
         id = result
@@ -73,19 +71,18 @@ class ContextIOClientTests
 
 
       it 'should create account and delete it', (test)->
-        id = Cio.createAccountSimple(user.mail,user.name,user.lastname)
+        id = Cio.createAccountSimple(user.mail, user.name, user.lastname)
 
         result = Cio.deleteAccount id
         expect(result).to.be.an('object')
 
         result = result.body
-        console.log result
         expect(result).to.be.an('object')
         expect(result).to.have.property('success')
         expect(result.success).to.eql(true)
 
       it 'should create accounts add a mailbox to it and delete them', (test)->
-        id = Cio.createAccountSimple(user.mail,user.name,user.lastname)
+        id = Cio.createAccountSimple(user.mail, user.name, user.lastname)
 
         # test full addMailbox method
         result = Cio.addMailbox id

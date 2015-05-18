@@ -18,17 +18,13 @@ Template.connectMailboxButton.events
       console.error "There's no account dude, what am I supposed to do with this?", account
       return
 
-    connectURL = 'http://127.0.0.1:3000/'
-    connectURL = 'https://connect.context.io/api/2.0/connect_tokens/sjq4kxhlla58acmr?user_id=5557270c14626f660c8b463a&developer_key=5554ffa9f1e8ca1c008b4567'
-    connectURL = 'https://connect.context.io/api/2.0/connect_tokens/sjq4kxhlla58acmr?user_id=5557270c14626f660c8b463a&developer_key=5554ffa9f1e8ca1c008b4567'
-
     isAddingAccount.set true
-    Meteor.call 'addMailbox', account, null, (e, r)->
+    Meteor.call 'addMailboxSimple', account, (e, connectURL)->
+      console.log e, connectURL
       isAddingAccount.set false
       if e?
         console.error e
         return
-      connectURL = r.body.browser_redirect_url
       window.open connectURL, "Office", popupFlags
 
 Template.connectMailboxButton.helpers

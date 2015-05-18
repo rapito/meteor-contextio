@@ -42,13 +42,13 @@ class @ContextIOClient
   addMailbox: (accountId, cbURL, cb)->
     expect(accountId).to.be.an('string')
 
-    if arguments.length == 2
-      cb = cbUrl
-      cbURL = @callbackUrl
+    if arguments.length == 2 and !_.isString(cbURL)
+      cb = cbURL
     else
       callbackURL = cbURL
-      callbackURL ?= @callbackUrl
-      expect(callbackURL).to.be.an('string')
+
+    callbackURL ?= @callbackUrl
+    expect(callbackURL).to.be.a('string')
 
     params = {callback_url: callbackURL}
     result = @callAsyncOrSync(@client.accounts(accountId).connectTokens().post, params, cb)

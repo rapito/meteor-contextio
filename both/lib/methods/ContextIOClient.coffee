@@ -1,15 +1,15 @@
 Meteor.methods
-  'createAccount': (primaryEmailAddress, firstName, lastName, cb)->
-    Cio.createAccount primaryEmailAddress, firstName, lastName, cb
+  'createAccount': (primaryEmailAddress, firstName, lastName)->
+    Cio.createAccount primaryEmailAddress, firstName, lastName
 
-  'createAccountSimple': (primaryEmailAddress, firstName, lastName, cb)->
-    Cio.createAccountSimple primaryEmailAddress, firstName, lastName, cb
+  'createAccountSimple': (primaryEmailAddress, firstName, lastName)->
+    Cio.createAccountSimple primaryEmailAddress, firstName, lastName
 
-  'deleteAccount': (accountId, cb)->
-    Cio.deleteAccount accountId, cb
+  'deleteAccount': (accountId)->
+    Cio.deleteAccount accountId
 
-  'addMailbox': (accountId, cbUrl, cb)->
-    Cio.addMailbox accountId, cbUrl, cb
+  'addMailbox': (accountId, cbUrl)->
+    Cio.addMailbox accountId, cbUrl
 
-  'addMailboxSimple': (accountId, cbUrl, cb)->
-    Cio.addMailboxSimple accountId, cbUrl, cb
+  'addMailboxSimple': (accountId, cbUrl)->
+    Cio.addMailboxSimple accountId, cbUrl

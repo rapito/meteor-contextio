@@ -38,6 +38,6 @@ Package.onTest(function (api) {
     api.use('practicalmeteor:munit');
     api.use('coffeescript');
 
-    api.addFiles('tests/MethodsTests.coffee');
+    api.addFiles('tests/MethodsTests.coffee', 'client');
     api.addFiles('tests/ContextIOClientTests.coffee', 'server');
 });

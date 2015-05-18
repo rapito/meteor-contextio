@@ -2,43 +2,54 @@ class Tests
 
   describe 'Tests', ->
     it 'should read settings', (test) ->
-      console.log 'should read settings'
       expect(Meteor.settings).not.to.be.null
 
   describe 'Methods', ->
-    accountId = '5557270c14626f660c8b463a'
+    # use an id from your own context.io accounts
+    accountId = '555972c677abddcb358b4603'
     user =
       mail: "bob.gut@hotmail.com"
       name: "Bob"
       lastname: "Gut"
 
-    it 'should call createAccount and deleteAccount', (test)->
-      Meteor.call 'createAccount', user.mail, user.name, user.lastname, (e, r)->
+    afterEach ->
+      spies.restoreAll()
+
+    it 'should call createAccount and deleteAccount', (test, waitFor)->
+      cb = (e, r)->
         expect(r).to.be.an('object')
         id = r?.body?.id
+
         # delete the created account
         Meteor.call 'deleteAccount', id, (e, r)->
           expect(r).to.be.an('object')
 
-    it 'should call createAccountSimple and deleteAccount', (test)->
-      Meteor.call 'createAccountSimple', user.mail, user.name, user.lastname, (e, r)->
+      Meteor.call 'createAccount', user.mail, user.name, user.lastname, waitFor(cb)
+
+    it 'should call createAccountSimple and deleteAccount', (test, waitFor)->
+      cb = (e, r)->
         expect(r).to.be.a('string')
         id = r
+
         # delete the created account
         Meteor.call 'deleteAccount', id, (e, r)->
           expect(r).to.be.an('object')
 
-    it 'should call addMailbox', (test)->
-      id = accountId
+      Meteor.call 'createAccountSimple', user.mail, user.name, user.lastname, waitFor(cb)
 
-      Meteor.call 'addMailbox', id, (e, r)->
+    it 'should call addMailbox', (test, waitFor)->
+      id = accountId
+      cb = (e, r)->
         expect(r).to.be.an('object')
 
-    it 'should call addMailboxSimple', (test)->
-      id = accountId
+      Meteor.call 'addMailbox', id, waitFor(cb)
 
-      Meteor.call 'addMailboxSimple', id, (e, r)->
+    it 'should call addMailboxSimple', (test, waitFor)->
+      id = accountId
+      cb = (e, r)->
         expect(r).to.be.a('string')
+
+      Meteor.call 'addMailboxSimple', id, waitFor(cb)
 
 
 Munit.run(new Tests())
