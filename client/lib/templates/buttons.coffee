@@ -23,7 +23,7 @@ Template.connectMailboxButton.events
     connectURL = 'https://connect.context.io/api/2.0/connect_tokens/sjq4kxhlla58acmr?user_id=5557270c14626f660c8b463a&developer_key=5554ffa9f1e8ca1c008b4567'
 
     isAddingAccount.set true
-    Meteor.call 'addMailbox', account, (e, r)->
+    Meteor.call 'addMailbox', account, null, (e, r)->
       isAddingAccount.set false
       if e?
         console.error e

@@ -28,12 +28,27 @@ class @ContextIOClient
 
     result
 
+  createAccountSimple: (primaryEmailAddress, firstName, lastName, cb)->
+    result = @createAccount primaryEmailAddress, firstName, lastName, cb
+    result = result?.body?.id
+    result
+
+  deleteAccount: (accountId, cb)->
+    expect(accountId).to.be.a('string')
+    result = @callAsyncOrSync(@client.accounts(accountId).delete, {}, cb)
+    result
+
   # Retrieves full object response of accounts/{id}/connect_tokens
   addMailbox: (accountId, cbURL, cb)->
     expect(accountId).to.be.an('string')
-    callbackURL = @callbackUrl
-    callbackURL ?= cbURL
-    expect(callbackURL).to.be.an('string')
+
+    if arguments.length == 2
+      cb = cbUrl
+      cbURL = @callbackUrl
+    else
+      callbackURL = cbURL
+      callbackURL ?= @callbackUrl
+      expect(callbackURL).to.be.an('string')
 
     params = {callback_url: callbackURL}
     result = @callAsyncOrSync(@client.accounts(accountId).connectTokens().post, params, cb)
@@ -42,7 +57,8 @@ class @ContextIOClient
   # Retrieves only browser_redirect_uri of accounts/{id}/connect_tokens
   addMailboxSimple: (accountId, cbURL, cb)->
     result = @addMailbox accountId, cbURL, cb
-    result?.body?.browser_redirect_url
+    result = result?.body?.browser_redirect_url
+    result
 
   # Shared method to choose whether to do an Async o
   # Sync call the the specified function

@@ -24,6 +24,7 @@ Package.onUse(function (api) {
     // API
     api.export('Cio', 'server');
     api.addFiles('server/lib/ContextIOClient.coffee', 'server');
+    api.addFiles('both/lib/methods/ContextIOClient.coffee', 'server');
 
     // UI
     api.addFiles('client/lib/templates/buttons.html', 'client');
@@ -37,6 +38,6 @@ Package.onTest(function (api) {
     api.use('practicalmeteor:munit');
     api.use('coffeescript');
 
-    api.addFiles('tests/Tests.coffee');
+    api.addFiles('tests/MethodsTests.coffee');
     api.addFiles('tests/ContextIOClientTests.coffee', 'server');
 });
