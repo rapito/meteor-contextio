@@ -1,0 +1,18 @@
+<head>
+    <title>rapito:contextio Simple Example</title>
+</head>
+
+<body>
+{{> simple}}
+</body>
+
+<template name="simple">
+    <h2>Simple Context.io integration test</h2>
+
+    <div>
+        <p>
+            Ceate an account first
+        </p>
+        {{> quickForm schema=accountSchema id="createAccountForm"}}
+    </div>
+</template>

@@ -64,7 +64,8 @@ Even though the package contains some utilities to make integration easier, it i
 
 ## Testing
 
-- munit tests: ```meteor test-packages rapito:contextio --port 1234 --settings settings.dev.json```
+- running examples: ```meteor --settings ../../settings.example.json``` 
+- munit tests: ```meteor test-packages rapito:contextio --port 1234 --settings settings.example.json```
 
 ## Dependencies
 
