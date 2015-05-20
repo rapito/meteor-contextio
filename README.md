@@ -56,6 +56,7 @@ Simply add via console
     - **required:** ```account``` account id to connect mailbox to.
     - *optional:* ```cio``` to specify wrapper to be used. *defaults to singleton*
     - *optional:* ```classes``` to override button style.
+    - *optional:* ```callbackUrl``` to redirect client to after mailbox registration.
     - *optional:* ```label``` Button Label.
 
 ## Roadmap
