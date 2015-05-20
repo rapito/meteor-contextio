@@ -1,6 +1,6 @@
 Package.describe({
     summary: "A lightweight toolkit to add support for Context.io to your Meteor App.",
-    version: "0.0.0",
+    version: "0.1.0",
     name: "rapito:contextio",
     git: "https://github.com/rapito/meteor-contextio.git"
 });
