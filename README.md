@@ -64,10 +64,11 @@ Even though the package contains some utilities to make integration easier, it i
 
 ## Testing
 
-- running examples: ```meteor --settings ../../settings.example.json``` 
+- running examples: ```cd example/simple/``` then ```meteor --settings settings.example.json```
 - munit tests: ```meteor test-packages rapito:contextio --port 1234 --settings settings.example.json```
 
 ## Dependencies
 
-- [Munit](https://github.com/practicalmeteor/munit)
 - [Context.io - npm](https://github.com/ContextIO/ContextIO-node)
+- [Munit](https://github.com/practicalmeteor/munit)
+- [Chai](https://github.com/practicalmeteor/chai)
