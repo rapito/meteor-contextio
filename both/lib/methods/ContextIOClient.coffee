@@ -13,3 +13,9 @@ Meteor.methods
 
   'addMailboxSimple': (accountId, cbUrl)->
     Cio.addMailboxSimple accountId, cbUrl
+
+  'connectTokens': (accountId, token)->
+    Cio.connectTokens accountId, token
+
+  'connectTokensSimple': (accountId, token)->
+    Cio.connectTokensSimple accountId, token

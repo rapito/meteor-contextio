@@ -60,6 +60,24 @@ class @ContextIOClient
     result = result?.body?.browser_redirect_url
     result
 
+  # Associates an account with a mailbox source with the specified token
+  connectTokens: (accountId, token, cb)->
+    expect(accountId).to.be.an('string')
+
+    if arguments.length == 2 and !_.isString(cbURL)
+      cb = token
+
+    expect(token).to.be.a('string')
+    result = @callAsyncOrSync(@client.accounts(accountId).connectTokens(token).get, null, cb)
+    result
+
+  # Associates an account with a mailbox source with the specified token
+  # Removes body attribute from object.
+  connectTokensSimple: (accountId, token, cb)->
+    result = @connect_tokens(accountId, token, cb)
+    result = result?.body
+    result
+
   # Shared method to choose whether to do an Async o
   # Sync call the the specified function
   callAsyncOrSync: (func, params, cb)->
