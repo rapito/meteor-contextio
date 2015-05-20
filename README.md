@@ -20,6 +20,12 @@ you understand [how-it-works](https://context.io/how-it-works/connecting-mailbox
 Even though the package contains some utilities to make integration easier, it is still a wrapper of [ContextIO-node](https://github.com/ContextIO/ContextIO-node)
  which is still in beta (i think) so be sure to check it's documentation on it's own repo.
 
+## Installation
+
+Simply add via console
+
+``` meteor add rapito:contextio ```
+
 ## Usage
 
 - Initialize cio:
