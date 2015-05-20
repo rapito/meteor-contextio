@@ -29,18 +29,28 @@ Even though the package contains some utilities to make integration easier, it i
     ``` var cio = Cio.get(apiKey,apiSecret); ```
 
 - Create cio accounts:
-    ```var userCioAccount = cio.createAccount(primaryEmailAddress@gmail.com,firstName,lastName);```
+    ```var userCioAccount = cio.createAccount(primaryEmailAddress,firstName,lastName);```
+
 - Connecting mailboxes:
-    ```{{> connectMailboxButton userCioAccount}}```
+
+    ```
+        Template.registerHelper('userCioAccount', function(){
+            return userCioAccount;
+        });
+    ```
+
+    ```{{> connectMailboxButton account=userCioAccountId}}```
+
 - Use npm package directly:
     ``` var cioNode = cio.client; ```
 
 ## Templates
 
 - connectMailboxButton: Adds a Button which initiates negotiation to [connect](https://context.io/docs/2.0/connect_tokens) a new mailbox. **(Hotmail or Gmail only)**
-    - **required:** ```userCioAccount``` param or as a context variable. account to connect mailbox to.
+    - **required:** ```account``` account id to connect mailbox to.
     - *optional:* ```cio``` to specify wrapper to be used. *defaults to singleton*
     - *optional:* ```classes``` to override button style.
+    - *optional:* ```label``` Button Label.
 
 ## Roadmap
 
@@ -54,9 +64,11 @@ Even though the package contains some utilities to make integration easier, it i
 
 ## Testing
 
-- munit tests: ```meteor test-packages rapito:contextio --port 1234 --settings settings.dev.json```
+- running examples: ```cd example/simple/``` then ```meteor --settings settings.example.json```
+- munit tests: ```meteor test-packages rapito:contextio --port 1234 --settings settings.example.json```
 
 ## Dependencies
 
-- [Munit](https://github.com/practicalmeteor/munit)
 - [Context.io - npm](https://github.com/ContextIO/ContextIO-node)
+- [Munit](https://github.com/practicalmeteor/munit)
+- [Chai](https://github.com/practicalmeteor/chai)

@@ -1,0 +1,48 @@
+<head>
+    <title>Simple Example | rapito:contextio</title>
+</head>
+
+<template name="home">
+    <h2>Simple Context.io Integration Test</h2>
+
+    <div>
+        {{#if accountId}}
+            {{> mailboxesForm}}
+            <br/>
+            {{> mailboxesInfo}}
+        {{else}}
+            {{> accountForm}}
+        {{/if}}
+    </div>
+</template>
+
+<template name="accountForm">
+    <p>
+        Create an account first
+    </p>
+    {{> quickForm id="createAccountForm" schema=accountSchema}}
+</template>
+
+<template name="mailboxesForm">
+    <p>
+        Great! Now Add a Mailbox (Hotmail or Gmail)
+    </p>
+    {{> connectMailboxButton label='Add a new Mailbox' account=accountId callbackUrl=callbackUrl}}
+</template>
+
+<template name="mailboxesInfo">
+    <p>
+        Below you can see your mailboxes:
+    </p>
+
+    <div class="mailbox">
+        {{#each mailboxes}}
+            <ul>
+                <li>Server Label: {{serverLabel}}</li>
+                <li>First Name: {{first_name}}</li>
+                <li>Last Name: {{last_name}}</li>
+            </ul>
+        {{/each}}
+    </div>
+
+</template>

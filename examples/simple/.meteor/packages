@@ -1,0 +1,7 @@
+standard-app-packages
+coffeescript
+iron:router
+aldeed:autoform
+rapito:contextio
+insecure
+autopublish
