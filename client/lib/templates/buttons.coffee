@@ -13,13 +13,14 @@ Template.connectMailboxButton.events
       return
 
     account = this?.account
+    cbUrl = this?.callbackUrl
 
     if not _.isString(account)
       console.error "There's no account dude, what am I supposed to do with this?", account
       return
 
     isAddingAccount.set true
-    Meteor.call 'addMailboxSimple', account, (e, connectURL)->
+    Meteor.call 'addMailboxSimple', account, cbUrl, (e, connectURL)->
       isAddingAccount.set false
       if e?
         console.error e

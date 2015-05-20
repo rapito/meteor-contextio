@@ -17,6 +17,6 @@ settings.dev.json
 settings.prod.json
 
 examples/**/packages/
-examples/**/.meteor/
+examples/**/.local/
 examples/**/.npm/
 
