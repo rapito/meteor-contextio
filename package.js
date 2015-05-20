@@ -16,7 +16,7 @@ Package.onUse(function (api) {
     api.use('reactive-var');
     api.use('coffeescript');
     api.use('underscore');
-    api.use('practicalmeteor:chai');
+    api.use('practicalmeteor:chai@1.9.2_3');
 
     api.use('standard-app-packages', both);
     api.use('templating', 'client');
