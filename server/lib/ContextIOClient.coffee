@@ -74,7 +74,7 @@ class @ContextIOClient
   # Associates an account with a mailbox source with the specified token
   # Removes body attribute from object.
   connectTokensSimple: (accountId, token, cb)->
-    result = @connect_tokens(accountId, token, cb)
+    result = @connectTokens(accountId, token, cb)
     result = result?.body
     result
 

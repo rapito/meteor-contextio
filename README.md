@@ -24,7 +24,9 @@ Even though the package contains some utilities to make integration easier, it i
 
 Simply add via console
 
-``` meteor add rapito:contextio ```
+``` 
+meteor add rapito:contextio 
+```
 
 ## Usage
 
