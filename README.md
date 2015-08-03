@@ -22,11 +22,13 @@ Even though the package contains some utilities to make integration easier, it i
 
 ## Installation
 
-Simply add via console
+- Simply add via console
 
-``` 
-meteor add rapito:contextio 
-```
+ ``` 
+ meteor add rapito:contextio 
+ ```
+- Setup **cio** credentials on your meteor project ```settings.json``` file. 
+
 
 ## Usage
 
