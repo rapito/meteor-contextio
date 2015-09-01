@@ -70,8 +70,8 @@ Even though the package contains some utilities to make integration easier, it i
 ## Examples
 
 - Check out the ```examples/``` folder for simple use cases.
-- App using this package:
-    - [PictureWorm](http://github.com/rapito/pictureworm)
+- Apps using this package (*pull request to add more*):
+    - [PictureWorm](http://github.com/rapito/picture-worm)
 
 ## Testing
 
