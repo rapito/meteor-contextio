@@ -34,9 +34,9 @@ Even though the package contains some utilities to make integration easier, it i
 
 - Initialize cio:
     - Use singleton by setting up credentials on settings.json as the library looks for ```Meteor.settings.services.contextio```. (read ```settings.example.json```)
-    ``` var cio = Cio.get(); ```
+    ``` var cio = Cio; //"Cio" is available globally ```
     - Or Manually create the client:
-    ``` var cio = Cio.get(apiKey,apiSecret); ```
+    ``` var cio = ContextIOClient.get(apiKey,apiSecret); ```
 
 - Create cio accounts:
     ```var userCioAccount = cio.createAccount(primaryEmailAddress,firstName,lastName);```
